@@ -1,8 +1,5 @@
 #!/bin/sh
 
-echo "=== Проверка OpenWrt ==="
-[ -f /etc/openwrt_release ] || { echo "Это не OpenWrt"; exit 1; }
-
 echo "=== Проверка модели ==="
 MODEL="$(cat /tmp/sysinfo/model 2>/dev/null)"
 echo "$MODEL" | grep -qi "AX3000T" || { echo "Не Xiaomi AX3000T"; exit 1; }
@@ -33,3 +30,4 @@ echo "=== Перезапуск uhttpd ==="
 /etc/init.d/uhttpd restart
 
 echo "=== ГОТОВО ==="
+
