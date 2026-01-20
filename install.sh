@@ -74,8 +74,6 @@ fi
 
 echo "Базовый перевод установлен"
 
-done
-
 echo "=== Устанавливаем язык LuCI: русский ==="
 uci set luci.main.lang='ru'
 uci commit luci
@@ -96,17 +94,6 @@ if opkg list | grep -q "^$THEME_PACKAGE "; then
         opkg install $THEME_PACKAGE
         echo "Тема $THEME_PACKAGE установлена."
     fi
-
-#    # Гарантированное применение темы
-#    uci set luci.main.mediaurlbase="Routerich"
-#    uci set luci.main.rnd_theme="Routerich"
-#    uci commit luci
-#    rm -rf /tmp/luci-*
-#    /etc/init.d/uhttpd restart
-
-#    echo "Тема $THEME_PACKAGE успешно применена."
-#else
-#    echo "Тема $THEME_PACKAGE недоступна в текущих репозиториях. Установка пропущена."
 fi
 
 # -----------------------------
