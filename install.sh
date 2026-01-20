@@ -68,26 +68,12 @@ echo "=== Устанавливаем базовый русский перево�
 opkg install luci-i18n-base-ru
 
 if ! opkg list-installed | grep -q '^luci-i18n-base-ru'; then
-    echo "❌ Ошибка: базовый перевод LuCI не установлен"
+    echo "Ошибка: базовый перевод LuCI не установлен"
     exit 1
 fi
 
-echo "✔ Базовый перевод установлен"
+echo "Базовый перевод установлен"
 
-echo "=== Поиск установленных LuCI-пакетов ==="
-opkg list-installed | awk '{print $1}' | grep '^luci-' | while read -r pkg; do
-    ru_pkg="${pkg}-ru"
-
-    if opkg list | grep -q "^$ru_pkg "; then
-        if opkg list-installed | grep -q "^$ru_pkg "; then
-            echo "✔ $ru_pkg уже установлен"
-        else
-            echo "→ Устанавливаем $ru_pkg"
-            opkg install "$ru_pkg" || echo "⚠ Не удалось установить $ru_pkg"
-        fi
-    else
-        echo "— Русификация для $pkg не найдена"
-    fi
 done
 
 echo "=== Устанавливаем язык LuCI: русский ==="
@@ -97,7 +83,7 @@ uci commit luci
 echo "=== Перезапуск веб-интерфейса ==="
 /etc/init.d/uhttpd restart
 
-echo "🎉 Русификация LuCI завершена"
+echo "Русификация LuCI завершена"
 
 # -----------------------------
 # Установка и применение темы luci-theme-routerich
@@ -142,7 +128,7 @@ done
 # -----------------------------
 # Установка Терминала
 # -----------------------------
-for PKG in "ttyd" "luci-i18n-ttyd-ru" "luci-app-ttyd"; do
+for PKG in "ttyd" "luci-i18n-ttyd-ru"; do
     if opkg list | grep -q "^$PKG "; then
         if opkg list-installed | grep -q "^$PKG "; then
             echo "Пакет $PKG уже установлен."
