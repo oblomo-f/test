@@ -61,12 +61,9 @@ if ! command -v opkg >/dev/null 2>&1; then
     exit 1
 fi
 
-echo "Обновляем список пакетов..."
+echo "Обновляем списки пакетов..."
 opkg update
 
-# -----------------------------
-# Установка русского перевода LuCI
-# -----------------------------
 echo "Устанавливаем базовый русский перевод LuCI..."
 opkg install luci-i18n-base-ru
 
@@ -77,9 +74,27 @@ else
     exit 1
 fi
 
+echo "Ищем все установленные пакеты LuCI..."
+# Получаем список всех установленных пакетов, начинающихся на luci-
+installed_luci=$(opkg list-installed | awk '{print $1}' | grep '^luci-')
+
+echo "Пытаемся установить русификацию для всех пакетов..."
+for pkg in $installed_luci; do
+    # Пробуем установить пакет с окончанием -ru
+    ru_pkg="${pkg}-ru"
+    if opkg list | grep -q "^$ru_pkg"; then
+        echo "Устанавливаем $ru_pkg..."
+        opkg install "$ru_pkg"
+    else
+        echo "Русификация для $pkg не найдена."
+    fi
+done
+
 echo "Переключаем язык LuCI на русский..."
 uci set luci.main.lang=ru
 uci commit luci
+
+echo "Русификация завершена."
 
 # -----------------------------
 # Установка и применение темы luci-theme-routerich
