@@ -105,19 +105,20 @@ if opkg list | grep -q "^$THEME_PACKAGE "; then
     else
         echo "Устанавливаем тему $THEME_PACKAGE..."
         opkg install $THEME_PACKAGE
+        echo "Тема $THEME_PACKAGE установлена."
     fi
 
-    # Гарантированное применение темы
-    uci set luci.main.mediaurlbase="Routerich"
-    uci set luci.main.rnd_theme="Routerich"
-    uci commit luci
-    rm -rf /tmp/luci-*
-    /etc/init.d/uhttpd restart
+#    # Гарантированное применение темы
+#    uci set luci.main.mediaurlbase="Routerich"
+#    uci set luci.main.rnd_theme="Routerich"
+#    uci commit luci
+#    rm -rf /tmp/luci-*
+#    /etc/init.d/uhttpd restart
 
-    echo "Тема $THEME_PACKAGE успешно применена."
-else
-    echo "Тема $THEME_PACKAGE недоступна в текущих репозиториях. Установка пропущена."
-fi
+#    echo "Тема $THEME_PACKAGE успешно применена."
+#else
+#    echo "Тема $THEME_PACKAGE недоступна в текущих репозиториях. Установка пропущена."
+#fi
 
 # -----------------------------
 # Установка File Manager и русификация
