@@ -64,24 +64,6 @@ fi
 echo "Обновляем списки пакетов..."
 opkg update
 
-echo "=== Устанавливаем базовый русский перевод LuCI ==="
-opkg install luci-i18n-base-ru
-
-if ! opkg list-installed | grep -q '^luci-i18n-base-ru'; then
-    echo "Ошибка: базовый перевод LuCI не установлен"
-    exit 1
-fi
-
-echo "Базовый перевод установлен"
-
-echo "=== Устанавливаем язык LuCI: русский ==="
-uci set luci.main.lang='ru'
-uci commit luci
-
-echo "=== Перезапуск веб-интерфейса ==="
-/etc/init.d/uhttpd restart
-
-echo "Русификация LuCI завершена"
 
 # -----------------------------
 # Установка и применение темы luci-theme-routerich
