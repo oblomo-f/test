@@ -66,7 +66,51 @@ printf "\033[32;1mКонфиг записан в $CONFIG_FILE\033[0m\n"
 printf "\n\n"
 
 printf "\033[32;1mУстановка opera-proxy\033[0m\n"
-opkg update && opkg install opera-proxy
+opkg update 
+
+PKG="opera-proxy"
+
+if opkg list-installed | grep -q "^$PKG "; then
+    printf "\033[32;1m "Пакет $PKG уже установлен.\033[0m\n"
+    printf "\033[32;1m-n "Переустановить? (y/n): \033[0m\n"
+    read answer
+
+    case "$answer" in
+        y|Y|yes|YES)
+            printf "\033[32;1m "Переустанавливаю $PKG...\033[0m\n"
+            opkg remove $PKG
+            opkg update && opkg install $PKG
+            ;;
+        *)
+            printf "\033[32;1m "Переустановка отменена.\033[0m\n"
+            ;;
+    esac
+else
+    printf "\033[32;1m "Пакет $PKG не установлен. Устанавливаю...\033[0m\n"
+    opkg install $PKG
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 printf "\033[31;1mAfter 10 second AUTOREBOOT ROUTER...\033[0m\n"
