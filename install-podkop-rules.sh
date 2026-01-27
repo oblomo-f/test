@@ -87,7 +87,6 @@ if opkg list-installed | grep -q "^$PKG "; then
 else
     printf "\033[32;1m "Пакет $PKG не установлен. Устанавливаю...\033[0m\n"
     opkg install $PKG
-fi
 
 printf "\033[33;1mПерезагрузить роутер? (y/n) Авто-перезагрузка через %d секунд...\033[0m\n" "$COUNTDOWN"
 
