@@ -87,3 +87,7 @@ cat << 'EOF' > "$NFQWS_FILE"
 EOF
 
 echo "Файл $NFQWS_FILE создан"
+
+
+service nfqws-keenetic restart
+service nfqws-keenetic status
