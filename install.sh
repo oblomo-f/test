@@ -72,7 +72,7 @@ if opkg list | grep -q "^$THEME_PACKAGE "; then
     if opkg list-installed | grep -q "^$THEME_PACKAGE "; then
         echo "Тема $THEME_PACKAGE уже установлена."
     else
-        echo "Устанавливаем тему $THEME_PACKAGE..."
+        echo "Устанавливаю тему $THEME_PACKAGE..."
         opkg install $THEME_PACKAGE
         echo "Тема $THEME_PACKAGE установлена."
     fi
@@ -86,7 +86,7 @@ for PKG in "$FILEMANAGER_PACKAGE" "$FILEMANAGER_LANG"; do
         if opkg list-installed | grep -q "^$PKG "; then
             echo "Пакет $PKG уже установлен."
         else
-            echo "Устанавливаем пакет $PKG..."
+            echo "Устанавливю пакет $PKG..."
             opkg install $PKG
         fi
     else
@@ -102,7 +102,7 @@ for PKG in "ttyd" "luci-i18n-ttyd-ru"; do
         if opkg list-installed | grep -q "^$PKG "; then
             echo "Пакет $PKG уже установлен."
         else
-            echo "Устанавливаем пакет $PKG..."
+            echo "Устанавливаю пакет $PKG..."
             opkg install $PKG
         fi
     else
@@ -117,4 +117,4 @@ done
 echo "Перезапуск LuCI..."
 /etc/init.d/uhttpd restart
 
-echo "Готово!."
+printf  "\033[32;1mГотово...\033[0m\n"
