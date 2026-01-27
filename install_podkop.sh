@@ -81,8 +81,6 @@ checkPackageAndInstall() {
 
 
 
-
-#####after test delete 
 DESCRIPTION=$(ubus call system board | jsonfilter -e '@.release.description')
 VERSION=$(ubus call system board | jsonfilter -e '@.release.version')
 findKey="OpenWrt"
@@ -99,12 +97,6 @@ fi
 
 echo "Update list packages..."
 opkg update
-
-checkPackageAndInstall "coreutils-base64" "1"
-
-encoded_code="IyEvYmluL3NoCgojINCn0YLQtdC90LjQtSDQvNC+0LTQtdC70Lgg0LjQtyDRhNCw0LnQu9CwCm1vZGVsPSQoY2F0IC90bXAvc3lzaW5mby9tb2RlbCkKCiMg0J/RgNC+0LLQtdGA0LrQsCwg0YHQvtC00LXRgNC20LjRgiDQu9C4INC80L7QtNC10LvRjCDRgdC70L7QstC+ICJSb3V0ZXJpY2giCmlmICEgZWNobyAiJG1vZGVsIiB8IGdyZXAgLXEgIlhpYW9taSI7IHRoZW4KICAgIGVjaG8gIlRoaXMgc2NyaXB0IGZvciByb3V0ZXJzIFhpYW9taS4uLiIKICAgIGV4aXQgMQpmaQ=="
-eval "$(echo "$encoded_code" | base64 --decode)"
-
 
 
 checkPackageAndInstall "jq" "1"
@@ -221,8 +213,6 @@ then
 fi
 
 manage_package "podkop" "enable" "stop"
-
-
 
 curl -f -o /dev/null -k --connect-to ::google.com -L -H "Host: mirror.gcr.io" --max-time 120 https://test.googlevideo.com/v2/cimg/android/blobs/sha256:2ab09b027e7f3a0c2e8bb1944ac46de38cebab7145f0bd6effebfe5492c818b6
 
