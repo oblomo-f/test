@@ -70,13 +70,13 @@ printf "\033[32;1mУстановка opera-proxy\033[0m\n"
 PKG="opera-proxy"
 
 if opkg list-installed | grep -q "^$PKG "; then
-    printf "\033[32;1m "Пакет $PKG уже установлен.\033[0m\n"
-    printf "\033[32;1m-n "Переустановить? (y/n): \033[0m\n"
+    printf "\033[32;1m Пакет $PKG уже установлен.\033[0m\n"
+    printf "\033[32;1m-n Переустановить? (y/n): \033[0m\n"
     read answer
 
     case "$answer" in
         y|Y|yes|YES)
-            printf "\033[32;1m "Переустанавливаю $PKG...\033[0m\n"
+            printf "\033[32;1m Переустанавливаю $PKG...\033[0m\n"
             opkg remove $PKG
             opkg update && opkg install $PKG
             ;;
@@ -85,7 +85,8 @@ if opkg list-installed | grep -q "^$PKG "; then
             ;;
     esac
 else
-    printf "\033[32;1m "Пакет $PKG не установлен. Устанавливаю...\033[0m\n"
+    printf "\033[32;1m Пакет $PKG не установлен. Устанавливаю...\033[0m\n"
+
     opkg install $PKG
 
 printf "\033[33;1mПерезагрузить роутер? (y/n) Авто-перезагрузка через %d секунд...\033[0m\n" "$COUNTDOWN"
