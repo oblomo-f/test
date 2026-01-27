@@ -63,4 +63,7 @@ else
 fi
 
 printf "\033[32;1mКонфиг записан в $CONFIG_FILE\033[0m\n"
+printf "\n\n"
 
+printf "\033[32;1mУстановка opera-proxy\033[0m\n"
+opkg update && opkg install opera-proxy
