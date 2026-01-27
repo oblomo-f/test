@@ -2,7 +2,7 @@
 DNS, Podkop, NQFWS
 
 
-Скрипт для установки темы (Routerich), пакет File Manager, Терминала. Добавления Репозитория (Routerich).\n
+Скрипт для установки темы (Routerich), пакет File Manager, Терминала. Добавления Репозитория (Routerich).<br>
 sh <(wget -O - https://raw.githubusercontent.com/oblomo-f/test/refs/heads/main/install.sh)
 
 Установка DNS (https-dns-proxy, dnsmasq-full, stubby )
