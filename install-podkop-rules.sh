@@ -67,3 +67,8 @@ printf "\n\n"
 
 printf "\033[32;1mУстановка opera-proxy\033[0m\n"
 opkg update && opkg install opera-proxy
+
+
+printf "\033[31;1mAfter 10 second AUTOREBOOT ROUTER...\033[0m\n"
+sleep 10
+reboot
