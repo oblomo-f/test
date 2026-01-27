@@ -2,9 +2,35 @@
 
 NFQWS_DIR="/etc/nfqws"
 NFQWS_FILE="$NFQWS_DIR/roblox.list"
+CONFIG_FILE="/etc/nfqws/nfqws.conf"
+CUSTOM_ARGS='NFQWS_ARGS_CUSTOM="--filter-udp=49152-65535 --dpi-desync=fake --dpi-desync-repeats=10 --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n2 --ipset=/etc/nfqws/roblox.list"'
 
-# Создаём каталог
-mkdir -p "$NFQWS_DIR"
+# Проверяем, существует ли файл
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Файл $CONFIG_FILE не найден!"
+    exit 1
+fi
+
+# Проверяем, есть ли уже строка с CUSTOM_ARGS
+grep -F "$CUSTOM_ARGS" "$CONFIG_FILE" > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    echo "Строка уже присутствует в файле."
+else
+    # Добавляем строку после первой строки, содержащей NFQWS_ARGS_CUSTOM
+    sed -i "/NFQWS_ARGS_CUSTOM/a $CUSTOM_ARGS" "$CONFIG_FILE"
+    echo "Строка добавлена в $CONFIG_FILE"
+fi
+
+# Перезапуск nfqws
+if /etc/init.d/nfqws status > /dev/null 2>&1; then
+    /etc/init.d/nfqws restart
+    echo "Сервис nfqws перезапущен."
+else
+    echo "Сервис nfqws не найден. Проверьте установку."
+fi
+
+
+
 
 # Записываем файл
 cat << 'EOF' > "$NFQWS_FILE"
