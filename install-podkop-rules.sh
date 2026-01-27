@@ -90,8 +90,6 @@ else
     opkg install $PKG
 fi
 
-
-
 printf "\033[31;1mAfter 10 second AUTOREBOOT ROUTER...\033[0m\n"
-sleep 10
+#sleep 10
 #reboot
