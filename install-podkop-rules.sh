@@ -70,25 +70,25 @@ printf "\033[32;1mУстановка opera-proxy\033[0m\n"
 PKG="opera-proxy"
 
 if opkg list-installed | grep -q "^$PKG "; then
-    printf "\033[32;1m Пакет $PKG уже установлен.\033[0m\n"
-    printf "\033[32;1m-n Переустановить? (y/n): \033[0m\n"
+    printf "\033[32;1mПакет $PKG уже установлен.\033[0m\n"
+    printf "\033[32;1mПереустановить? (y/n): \033[0m"
     read answer
 
     case "$answer" in
         y|Y|yes|YES)
-            printf "\033[32;1m Переустанавливаю $PKG...\033[0m\n"
+            printf "\033[32;1mПереустанавливаю $PKG...\033[0m\n"
             opkg remove $PKG
             opkg update && opkg install $PKG
             ;;
         *)
-            printf "\033[32;1m "Переустановка отменена.\033[0m\n"
+            printf "\033[32;1mПереустановка отменена.\033[0m\n"
             ;;
     esac
 else
     printf "\033[32;1mПакет %s не установлен. Устанавливаю...\033[0m\n" "$PKG"
-
     opkg install $PKG
 fi
+
 
 printf "\033[31;1mAfter 10 second AUTOREBOOT ROUTER...\033[0m\n"
 #sleep 10
