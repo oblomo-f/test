@@ -41,6 +41,9 @@ sh <(wget -O - https://raw.githubusercontent.com/itdoginfo/podkop/refs/heads/mai
 ```bash
 sh <(wget -O - https://raw.githubusercontent.com/oblomo-f/test/refs/heads/main/install-podkop-rules.sh)
 ```
+```bash
+sh <(wget -O - https://raw.githubusercontent.com/oblomo-f/test/refs/heads/main/install_podkop.sh)
+```
 
 ### ⚡ NQFWS
 Сетевой стек.
