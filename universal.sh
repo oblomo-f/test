@@ -252,8 +252,8 @@ zapret
 dhcp
 dns-failsafe-proxy
 stubby"
-#URL="https://raw.githubusercontent.com/routerich/RouterichAX3000_configs/refs/heads/podkop07"
-URL="https://raw.githubusercontent.com/oblomo-f/Xiaomi-AX3000T_config/refs/heads/podkop"
+URL="https://raw.githubusercontent.com/routerich/RouterichAX3000_configs/refs/heads/podkop07"
+#URL="https://raw.githubusercontent.com/oblomo-f/Xiaomi-AX3000T_config/refs/heads/podkop"
 
 checkPackageAndInstall "luci-app-dns-failsafe-proxy" "1"
 checkPackageAndInstall "luci-i18n-stubby-ru" "1"
@@ -462,8 +462,8 @@ service odhcpd restart
 
 path_podkop_config="/etc/config/podkop"
 path_podkop_config_backup="/root/podkop"
-#URL="https://raw.githubusercontent.com/routerich/RouterichAX3000_configs/refs/heads/podkop07"
-URL="https://raw.githubusercontent.com/oblomo-f/Xiaomi-AX3000T_config/refs/heads/podkop"
+URL="https://raw.githubusercontent.com/routerich/RouterichAX3000_configs/refs/heads/podkop07"
+#URL="https://raw.githubusercontent.com/oblomo-f/Xiaomi-AX3000T_config/refs/heads/podkop"
 
 
 messageComplete=""
@@ -551,7 +551,7 @@ case $varByPass in
 esac
 
 PACKAGE="podkop"
-REQUIRED_VERSION="v0.7.10-r1"
+REQUIRED_VERSION="v0.7.9-r1"
 
 INSTALLED_VERSION=$(opkg list-installed | grep "^$PACKAGE" | cut -d ' ' -f 3)
 if [ -n "$INSTALLED_VERSION" ] && [ "$INSTALLED_VERSION" != "$REQUIRED_VERSION" ]; then
@@ -574,9 +574,9 @@ else
 	if [ "$is_install_podkop" = "y" ] || [ "$is_install_podkop" = "Y" ]; then
 		DOWNLOAD_DIR="/tmp/podkop"
 		mkdir -p "$DOWNLOAD_DIR"
-                        podkop_files="podkop-v0.7.10-r1-all.ipk
-			luci-app-podkop-v0.7.10-r1-all.ipk
-			luci-i18n-podkop-ru-0.7.10.ipk"
+                        podkop_files="podkop-v0.7.9-r1-all.ipk
+			luci-app-podkop-v0.7.9-r1-all.ipk
+			luci-i18n-podkop-ru-0.7.9.ipk"
 		for file in $podkop_files
 		do
 			echo "Download $file..."
