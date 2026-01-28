@@ -183,7 +183,7 @@ else
 fi
 
 
-#####after test delete 
+#####after
 DESCRIPTION=$(ubus call system board | jsonfilter -e '@.release.description')
 VERSION=$(ubus call system board | jsonfilter -e '@.release.version')
 findKey="OpenWrt"
@@ -195,11 +195,12 @@ else
 	printf "\033[32;1mThis old firmware.\nTo use this script, update your firmware to the latest version....\033[0m\n"
 	exit 1
 fi
-####after test delete 
+####after
 
 
 echo "Update list packages..."
 opkg update
+
 
 checkPackageAndInstall "coreutils-base64" "1"
 
