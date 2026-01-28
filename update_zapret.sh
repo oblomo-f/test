@@ -4,6 +4,8 @@
 TMPDIR="/tmp/zapret"
 mkdir -p "$TMPDIR"
 cd "$TMPDIR" || exit 1
+opkg update
+opkg install wget
 
 REPO="remittor/zapret-openwrt"
 API_URL="https://api.github.com/repos/$REPO/releases/latest"
