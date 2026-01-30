@@ -667,17 +667,17 @@ dhcp
 dns-failsafe-proxy
 stubby
 wdoc
-wdoc-singbox
-wdoc-warp
-wdoc-wg"
+#wdoc-singbox
+wdoc-warp"
+#wdoc-wg"
 URL="https://raw.githubusercontent.com/routerich/RouterichAX3000_configs/refs/heads/wdoctrack"
 
 checkPackageAndInstall "luci-app-dns-failsafe-proxy" "1"
 checkPackageAndInstall "luci-i18n-stubby-ru" "1"
 checkPackageAndInstall "luci-i18n-doh-proxy-ru" "1"
-checkPackageAndInstall "luci-i18n-wdoc-singbox-ru" "1"
+#checkPackageAndInstall "luci-i18n-wdoc-singbox-ru" "1"
 checkPackageAndInstall "luci-i18n-wdoc-warp-ru" "1"
-checkPackageAndInstall "luci-i18n-wdoc-wg-ru" "1"
+#checkPackageAndInstall "luci-i18n-wdoc-wg-ru" "1"
 
 #проверяем установлени ли пакет https-dns-proxy
 if opkg list-installed | grep -q https-dns-proxy; then
@@ -697,7 +697,8 @@ then
 
 	for file in $config_files
 	do
-		if [ "$file" == "doh-proxy" ] || [ "$file" == "dns-failsafe-proxy" ] || [ "$file" == "stubby" ] || [ "$file" == "wdoc" ] || [ "$file" == "wdoc-singbox" ] || [ "$file" == "wdoc-warp" ]
+#		if [ "$file" == "doh-proxy" ] || [ "$file" == "dns-failsafe-proxy" ] || [ "$file" == "stubby" ] || [ "$file" == "wdoc" ] || [ "$file" == "wdoc-singbox" ] || [ "$file" == "wdoc-warp" ]
+        if [ "$file" == "doh-proxy" ] || [ "$file" == "dns-failsafe-proxy" ] || [ "$file" == "stubby" ] || [ "$file" == "wdoc" ] || [ "$file" == "wdoc-warp" ]
 		then 
 		  wget -O "$DIR/$file" "$URL/config_files/$file" 
 		fi
@@ -1344,9 +1345,9 @@ fi
 service doh-proxy restart
 service stubby restart
 service wdoc restart
-service wdoc-singbox restart
+#service wdoc-singbox restart
 service wdoc-warp restart
-service wdoc-wg restart
+#service wdoc-wg restart
 service dns-failsafe-proxy restart
 
 printf  "\033[32;1mService Podkop and Sing-Box restart...\033[0m\n"
